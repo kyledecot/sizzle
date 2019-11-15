@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "sizzle"
+
+Sizzle::CLI.run(ARGV)

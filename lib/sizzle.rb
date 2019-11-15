@@ -1,6 +1,5 @@
 require "sizzle/version"
+require "sizzle/cli"
 
-module Sizzle
-  class Error < StandardError; end
-  # Your code goes here...
+class Sizzle
 end
