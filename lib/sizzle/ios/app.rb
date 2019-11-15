@@ -2,9 +2,9 @@ require "sizzle/ios/client"
 
 class Sizzle 
   class IOS
-    class Build
+    class App 
       def self.list
-        CLIENT.builds[:data]
+        CLIENT.apps[:data]
       end 
     end 
   end 

@@ -1,22 +1,14 @@
-require "app_store_connect"
+require "sizzle/ios/client"
 
 class Sizzle 
   class IOS
-    class Device 
-      def self.create(name:, udid:, platform:)
-        client.create_device(
-          name: name, 
-          udid: udid, 
-          platform: platform
-        )
+    class Device
+      def self.create(options = {})
+        CLIENT.create_device(options.slice(:name, :udid, :platform))
       end 
 
-      def self.list(limit:)
-        client.devices(limit: limit)[:data]
-      end 
-
-      def self.client
-        AppStoreConnect::Client.new 
+      def self.list(options = {})
+        CLIENT.devices(limit: options[:limit])[:data]
       end 
     end 
   end 

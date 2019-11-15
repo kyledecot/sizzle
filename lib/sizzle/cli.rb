@@ -4,18 +4,23 @@ require "terminal-table"
 
 require "sizzle/ios/device"
 require "sizzle/ios/build"
+require "sizzle/ios/app"
 
 class Sizzle 
   class CLI 
     extend GLI::App
     
     command :ios do |ios|
+      ios.flag %i(app-store-connect-key-id)
+      ios.flag %i(app-store-connect-issuer-id)
+      ios.flag %i(app-store-connect-private-key)
+
       ios.command :builds do |builds|
         builds.command :list do |list|
           list.action do |global, options, args|
             puts Terminal::Table.new(
               title: "Builds".green,
-              rows: IOS::Build.list.map { |b| b[:attributes].values }
+              rows: IOS::Build.list(global.merge(options)).map { |b| b[:attributes].values }
             )          
           end 
         end 
@@ -42,24 +47,17 @@ class Sizzle
           list.action do |global, options, args|
             puts Terminal::Table.new(
               :title => 'Devices'.green,
-              :rows => IOS::Device.list(limit: options[:limit]).map { |d| d[:attributes].values },
+              :rows => IOS::Device.list(limit: options[:limit]).map { |d| d[:attributes].values }
             )
           end 
-
         end 
-
       end 
 
       ios.command :apps do |apps|
         apps.action do 
-          require 'app_store_connect'
-
-          app_store_connect = AppStoreConnect::Client.new
-          apps = app_store_connect.apps
-
           table = Terminal::Table.new(
             :title => 'Apps',
-            :rows => app_store_connect.apps[:data].map { |d| d[:attributes].values },
+            :rows => IOS::App.list.map { |d| d[:attributes].values }
           )
 
           puts table
