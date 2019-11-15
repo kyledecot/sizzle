@@ -22,7 +22,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby 
+sizzle devices create --name="Kyle Decot's iPhone" --udid="XXX" --platform=IOS
+```
 
 ## Development
 
