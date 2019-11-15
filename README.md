@@ -22,8 +22,8 @@ Or install it yourself as:
 
 ## Usage
 
-```ruby 
-sizzle devices create --name="Kyle Decot's iPhone" --udid="XXX" --platform=IOS
+```bash
+$ sizzle devices create --name="Kyle Decot's iPhone" --udid="XXX" --platform=IOS
 ```
 
 ## Development
