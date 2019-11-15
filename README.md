@@ -23,7 +23,7 @@ Or install it yourself as:
 ## Usage
 
 ```bash
-$ sizzle devices create --name="Kyle Decot's iPhone" --udid="XXX" --platform=IOS
+$ sizzle ios devices create --name="Kyle Decot's iPhone" --udid="XXX" --platform=IOS
 ```
 
 ## Development
